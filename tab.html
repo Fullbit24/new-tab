@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Custom Start Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('/home/kali/Pictures/wallpaper set 1/yuki.jpg'); /* replace with your file */
+      background-size: cover;
+      background-position: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: #00bfff;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 40%;  /* <--- Move this to change vertical position */
+      left: 50%; /* <--- Move this to change horizontal position */
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    input[type="text"] {
+      width: 300px;
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .music-toggle {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #00bfff;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay">
+    <form id="searchForm" action="https://www.google.com/search" method="GET">
+      <input type="text" name="q" placeholder="Search the web..." autofocus />
+    </form>
+  </div>
+
+  <button class="music-toggle" onclick="toggleMusic()">🎧 Music</button>
+  <audio id="bgm" loop>
+    <source src="your-music.mp3" type="audio/mpeg"> <!-- replace with your music file -->
+  </audio>
+
+  <script>
+    const audio = document.getElementById("bgm");
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (!isPlaying) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+</body>
+</html>
